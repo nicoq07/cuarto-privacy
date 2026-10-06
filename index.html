@@ -5,8 +5,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Política de privacidad — Cuarto</title>
 	<style>
-		body { margin: 0; background: #000; color: #c4b8a5; font: 18px/1.5 Georgia, serif; }
+		body {
+			margin: 0;
+			background: #000;
+			color: #c4b8a5;
+			font: 18px/1.5 Georgia, "Songti SC", "Hiragino Mincho ProN", "Noto Serif CJK SC", "Noto Serif CJK JP", serif;
+		}
 		main { max-width: 38rem; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+		nav { display: flex; flex-wrap: wrap; gap: 0.9rem 1.1rem; margin-bottom: 2rem; }
+		button {
+			background: none;
+			border: 0;
+			padding: 0;
+			color: #6a6560;
+			font: inherit;
+			cursor: pointer;
+		}
+		button[aria-current="true"] { color: #f2e6c9; }
 		h1 { font-size: 1.6rem; font-weight: normal; color: #f2e6c9; }
 		h2 { font-size: 1.1rem; font-weight: normal; color: #f2e6c9; margin-top: 2rem; }
 		a { color: #f2e6c9; }
@@ -14,35 +29,184 @@
 </head>
 <body>
 <main>
-	<h1>Política de privacidad de Cuarto</h1>
-	<p>Vigente desde el 6 de octubre de 2026.</p>
-	<p>Cuarto es un juego de Nicolás Quiroga. Esta página explica qué hace la aplicación con la información del dispositivo.</p>
-
-	<h2>Qué no hace</h2>
-	<p>Cuarto no pide una cuenta. No muestra anuncios. No incluye analítica. No se conecta a internet y no envía datos a ningún servidor. No comparte información con terceros.</p>
-
-	<h2>Qué queda en el teléfono</h2>
-	<p>Para seguir la partida, la aplicación guarda en el almacenamiento privado del dispositivo:</p>
-	<ul>
-		<li>el idioma elegido;</li>
-		<li>qué cuartos se resolvieron, los tiempos y los intentos;</li>
-		<li>qué notas aparecieron en el cuaderno.</li>
-	</ul>
-	<p>Esos archivos no salen del teléfono. Al desinstalar la aplicación se borran. La copia de seguridad de Android está desactivada.</p>
-	<p>La primera vez, Cuarto lee el idioma del sistema solo para elegir el texto. Esa lectura no se transmite.</p>
-
-	<h2>Permisos</h2>
-	<p>La aplicación no pide acceso a contactos, ubicación, cámara, micrófono, fotos ni archivos fuera de su propio almacenamiento.</p>
-
-	<h2>Edad</h2>
-	<p>Cuarto se puede jugar a partir de los 9 años. No tiene chat, compras ni anuncios, y no recoge datos personales de menores ni de nadie.</p>
-
-	<h2>Cambios</h2>
-	<p>Si esta política cambia, la versión nueva reemplaza a esta página y lleva otra fecha.</p>
-
-	<h2>Contacto</h2>
-	<p>Nicolás Quiroga<br>
-	<a href="mailto:nicoq07@gmail.com">nicoq07@gmail.com</a></p>
+	<nav id="langs"></nav>
+	<article id="doc"></article>
 </main>
+<script>
+const ORDER = ["en", "es", "pt", "zh", "ja"]
+const NAMES = { en: "English", es: "Español", pt: "Português", zh: "简体中文", ja: "日本語" }
+const TEXT = {
+	es: {
+		title: "Política de privacidad — Cuarto",
+		h1: "Política de privacidad de Cuarto",
+		date: "Vigente desde el 6 de octubre de 2026.",
+		intro: "Cuarto es un juego de Nicolás Quiroga. Esta página explica qué hace la aplicación con la información del dispositivo.",
+		sections: [
+			["Qué no hace", ["Cuarto no pide una cuenta. No muestra anuncios. No incluye analítica. No se conecta a internet y no envía datos a ningún servidor. No comparte información con terceros."]],
+			["Qué queda en el teléfono", [
+				"Para seguir la partida, la aplicación guarda en el almacenamiento privado del dispositivo:",
+				["el idioma elegido", "qué cuartos se resolvieron, los tiempos y los intentos", "qué notas aparecieron en el cuaderno"],
+				"Esos archivos no salen del teléfono. Al desinstalar la aplicación se borran. La copia de seguridad de Android está desactivada.",
+				"La primera vez, Cuarto lee el idioma del sistema solo para elegir el texto. Esa lectura no se transmite."
+			]],
+			["Permisos", ["La aplicación no pide acceso a contactos, ubicación, cámara, micrófono, fotos ni archivos fuera de su propio almacenamiento."]],
+			["Edad", ["Cuarto se puede jugar a partir de los 9 años. No tiene chat, compras ni anuncios, y no recoge datos personales de menores ni de nadie."]],
+			["Cambios", ["Si esta política cambia, la versión nueva reemplaza a esta página y lleva otra fecha."]]
+		],
+		contact: "Contacto"
+	},
+	en: {
+		title: "Privacy policy — Cuarto",
+		h1: "Privacy policy for Cuarto",
+		date: "Effective October 6, 2026.",
+		intro: "Cuarto is a game by Nicolás Quiroga. This page explains what the app does with information on the device.",
+		sections: [
+			["What it does not do", ["Cuarto does not ask for an account. It does not show ads. It does not include analytics. It does not connect to the internet and does not send data to any server. It does not share information with third parties."]],
+			["What stays on the phone", [
+				"To keep the game going, the app stores the following in the device's private storage:",
+				["the chosen language", "which rooms were solved, the times, and the attempts", "which notes appeared in the notebook"],
+				"Those files never leave the phone. They are deleted when the app is uninstalled. Android backup is off.",
+				"The first time, Cuarto reads the system language only to choose the text. That read is not transmitted."
+			]],
+			["Permissions", ["The app does not ask for access to contacts, location, camera, microphone, photos, or files outside its own storage."]],
+			["Age", ["Cuarto can be played from age 9. It has no chat, purchases, or ads, and it does not collect personal data from children or from anyone."]],
+			["Changes", ["If this policy changes, the new version replaces this page and carries a new date."]]
+		],
+		contact: "Contact"
+	},
+	pt: {
+		title: "Política de privacidade — Cuarto",
+		h1: "Política de privacidade do Cuarto",
+		date: "Vigente desde 6 de outubro de 2026.",
+		intro: "Cuarto é um jogo de Nicolás Quiroga. Esta página explica o que a aplicação faz com a informação do dispositivo.",
+		sections: [
+			["O que não faz", ["Cuarto não pede uma conta. Não mostra anúncios. Não inclui analítica. Não se liga à internet e não envia dados a nenhum servidor. Não partilha informação com terceiros."]],
+			["O que fica no telefone", [
+				"Para continuar a partida, a aplicação guarda no armazenamento privado do dispositivo:",
+				["o idioma escolhido", "que quartos foram resolvidos, os tempos e as tentativas", "que notas apareceram no caderno"],
+				"Esses ficheiros não saem do telefone. Ao desinstalar a aplicação, são apagados. A cópia de segurança do Android está desativada.",
+				"Na primeira vez, Cuarto lê o idioma do sistema só para escolher o texto. Essa leitura não é transmitida."
+			]],
+			["Permissões", ["A aplicação não pede acesso a contactos, localização, câmara, microfone, fotos nem ficheiros fora do seu próprio armazenamento."]],
+			["Idade", ["Cuarto pode ser jogado a partir dos 9 anos. Não tem chat, compras nem anúncios, e não recolhe dados pessoais de menores nem de ninguém."]],
+			["Alterações", ["Se esta política mudar, a versão nova substitui esta página e traz outra data."]]
+		],
+		contact: "Contacto"
+	},
+	zh: {
+		title: "隐私政策 — Cuarto",
+		h1: "Cuarto 隐私政策",
+		date: "自 2026 年 10 月 6 日起生效。",
+		intro: "Cuarto 是 Nicolás Quiroga 的游戏。本页说明应用如何处理设备上的信息。",
+		sections: [
+			["应用不做什么", ["Cuarto 不要求账号。不显示广告。不含分析。不连接互联网，也不向任何服务器发送数据。不与第三方共享信息。"]],
+			["留在手机上的内容", [
+				"为了继续游戏，应用在设备的私有存储中保存：",
+				["所选语言", "哪些房间已通过、用时和尝试次数", "笔记本里出现了哪些笔记"],
+				"这些文件不会离开手机。卸载应用时会被删除。Android 备份已关闭。",
+				"第一次打开时，Cuarto 只读取系统语言来选择文字。这次读取不会被传输出去。"
+			]],
+			["权限", ["应用不请求通讯录、位置、相机、麦克风、照片，也不请求自身存储以外的文件。"]],
+			["年龄", ["Cuarto 可以从 9 岁起玩。没有聊天、购买和广告，也不收集未成年人或任何人的个人数据。"]],
+			["变更", ["如果本政策变更，新版本会替换本页，并标上新的日期。"]]
+		],
+		contact: "联系"
+	},
+	ja: {
+		title: "プライバシーポリシー — Cuarto",
+		h1: "Cuarto のプライバシーポリシー",
+		date: "2026年10月6日から有効です。",
+		intro: "Cuarto は Nicolás Quiroga のゲームです。このページは、アプリが端末上の情報をどう扱うかを説明します。",
+		sections: [
+			["しないこと", ["Cuarto はアカウントを求めません。広告を表示しません。分析を含みません。インターネットに接続せず、どのサーバーにもデータを送りません。第三者に情報を共有しません。"]],
+			["電話に残るもの", [
+				"続きから遊べるように、アプリは端末の非公開領域に次を保存します。",
+				["選んだ言語", "どの部屋を解いたか、時間、試行回数", "手帳に出たメモ"],
+				"これらのファイルは電話の外に出ません。アンインストールすると消えます。Android のバックアップはオフです。",
+				"最初の起動時、Cuarto は表示する文字を選ぶためだけにシステムの言語を読みます。その読み取りは送信されません。"
+			]],
+			["権限", ["アプリは連絡先、位置情報、カメラ、マイク、写真、および自身の保存領域の外のファイルへのアクセスを求めません。"]],
+			["年齢", ["Cuarto は 9 歳から遊べます。チャット、購入、広告はなく、子どもを含む誰の個人データも収集しません。"]],
+			["変更", ["このポリシーが変わる場合、新しい版がこのページを置き換え、別の日付が付きます。"]]
+		],
+		contact: "連絡先"
+	}
+}
+
+const langs = document.getElementById("langs")
+const doc = document.getElementById("doc")
+
+function codeFrom(value) {
+	const tag = (value || "").toLowerCase()
+	if (tag.startsWith("zh")) return "zh"
+	const two = tag.slice(0, 2)
+	return ORDER.indexOf(two) >= 0 ? two : ""
+}
+
+function current() {
+	return codeFrom(location.hash.slice(1)) || codeFrom(navigator.language) || "es"
+}
+
+function render(code) {
+	const page = TEXT[code]
+	document.documentElement.lang = code
+	document.title = page.title
+	langs.replaceChildren()
+	for (const id of ORDER) {
+		const button = document.createElement("button")
+		button.type = "button"
+		button.textContent = NAMES[id]
+		button.setAttribute("aria-current", id === code ? "true" : "false")
+		button.addEventListener("click", function () {
+			history.replaceState(null, "", "#" + id)
+			render(id)
+		})
+		langs.appendChild(button)
+	}
+	doc.replaceChildren()
+	const h1 = document.createElement("h1")
+	h1.textContent = page.h1
+	doc.appendChild(h1)
+	const date = document.createElement("p")
+	date.textContent = page.date
+	doc.appendChild(date)
+	const intro = document.createElement("p")
+	intro.textContent = page.intro
+	doc.appendChild(intro)
+	for (const section of page.sections) {
+		const h2 = document.createElement("h2")
+		h2.textContent = section[0]
+		doc.appendChild(h2)
+		for (const block of section[1]) {
+			if (Array.isArray(block)) {
+				const list = document.createElement("ul")
+				for (const item of block) {
+					const li = document.createElement("li")
+					li.textContent = item
+					list.appendChild(li)
+				}
+				doc.appendChild(list)
+			} else {
+				const p = document.createElement("p")
+				p.textContent = block
+				doc.appendChild(p)
+			}
+		}
+	}
+	const h2 = document.createElement("h2")
+	h2.textContent = page.contact
+	doc.appendChild(h2)
+	const contact = document.createElement("p")
+	contact.append("Nicolás Quiroga")
+	contact.append(document.createElement("br"))
+	const mail = document.createElement("a")
+	mail.href = "mailto:nicoq07@gmail.com"
+	mail.textContent = "nicoq07@gmail.com"
+	contact.append(mail)
+	doc.appendChild(contact)
+}
+
+render(current())
+</script>
 </body>
 </html>
